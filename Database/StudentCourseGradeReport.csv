@@ -1,0 +1,5 @@
+﻿StudentId,StudentName,CourseName,ProfessorName,StartDate,Grade
+3,Gabriel,COIS312,Luis Dominguez,8/25/2023,A
+2,Luis,COIS312,Luis Dominguez,8/25/2023,NULL
+3,Gabriel,COIS312,Luis Dominguez,8/25/2022,A
+3,Gabriel,CYBS103,Isaac Martinez,8/24/2023,A
