@@ -27,7 +27,7 @@ namespace AGMU.WebApi.Controllers
                 Name = t.Name,
                 DateOfBirth = t.DateOfBirth,
                 PhoneNumber = t.PhoneNumber,
-                ProgramId = t.ProgramId,
+                AcademicProgramId = t.AcademicProgramId,
                 AcademicProgram = new AcademicProgram
                 {
                     Id = t.AcademicProgram.Id,
@@ -48,7 +48,7 @@ namespace AGMU.WebApi.Controllers
                 Name = t.Name,
                 DateOfBirth = t.DateOfBirth,
                 PhoneNumber = t.PhoneNumber,
-                ProgramId = t.ProgramId,
+                AcademicProgramId = t.AcademicProgramId,
                 AcademicProgram = new AcademicProgram
                 {
                     Id = t.AcademicProgram.Id,
@@ -78,7 +78,7 @@ namespace AGMU.WebApi.Controllers
                 return NotFound("Invalid student Id");
             }
             dbStudent.PhoneNumber = request.PhoneNumber;
-            dbStudent.ProgramId = request.ProgramId;
+            dbStudent.AcademicProgramId = request.AcademicProgramId;
             dbStudent.Name = request.Name;
             dbStudent.DateOfBirth = request.DateOfBirth;
             _ = await _agmuDbContext.SaveChangesAsync();

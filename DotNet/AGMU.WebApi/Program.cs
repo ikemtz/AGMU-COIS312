@@ -13,18 +13,29 @@ builder.Services.AddDbContext<AgmuContext>(
             options => options
             .UseSqlServer(builder.Configuration["DbConnectionString"])
 );
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("all", policy =>
+  {
+    _ = policy
+      .AllowAnyHeader()
+      .AllowAnyMethod()
+      .AllowAnyOrigin();
+  });
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    _ = app.UseSwagger();
-    _ = app.UseSwaggerUI();
+  _ = app.UseSwagger();
+  _ = app.UseSwaggerUI();
 }
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors("all");
 
 app.Run();

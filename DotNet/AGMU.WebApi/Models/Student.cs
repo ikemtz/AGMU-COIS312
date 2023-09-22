@@ -4,7 +4,7 @@ public partial class Student
 {
     public int Id { get; set; }
 
-    public int? ProgramId { get; set; }
+    public int? AcademicProgramId { get; set; }
 
     public string Name { get; set; } = null!;
 
