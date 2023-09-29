@@ -11,7 +11,6 @@ import { AddEditStudentComponent } from './add-edit-student/add-edit-student.com
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular Is Awesome';
   public studentData$: Observable<IStudent[]>;
   public props = StudentProperties;
 
@@ -21,13 +20,10 @@ export class AppComponent {
     StudentProperties.NAME,
     'edit'
   ];
-
-
   constructor(
     private readonly httpClient: HttpClient,
     private readonly dialog: MatDialog) {
     this.studentData$ = this.httpClient.get<IStudent[]>('http://localhost:5161/Students');
-
   }
 
   private openDialog(student?: IStudent) {
@@ -37,9 +33,8 @@ export class AppComponent {
       width: '600px',
     });
 
-    dialogRef.afterClosed().pipe(delay(3000)).subscribe(() => {
+    dialogRef.afterClosed().pipe(delay(2000)).subscribe(() => {
       this.studentData$ = this.httpClient.get<IStudent[]>('http://localhost:5161/Students');
-
     });
   }
 

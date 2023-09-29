@@ -17,7 +17,7 @@ export class AddEditStudentComponent {
   constructor(
     private readonly httpClient: HttpClient,
     private readonly datePipe: DatePipe,
-    @Inject(MAT_DIALOG_DATA) public student: IStudent,) {
+    @Inject(MAT_DIALOG_DATA) public student: IStudent) {
     this.studentFormGroup = StudentFormGroupFac();
     if (student) {
       this.editStudent(student);
