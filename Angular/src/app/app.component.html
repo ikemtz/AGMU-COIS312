@@ -1,54 +1,47 @@
-<p>Hello World!!!</p>
-
-<p>{{ title }}</p>
-<hr />
-
+<h4>Student Data</h4>
 <div *ngIf="studentData$ | async as studentData">
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Date Of Birth</th>
-      <th>Phone Number</th>
-      <th>Academic Program</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let student of studentData">
-      <td>{{ student.id }}</td>
-      <td>{{ student.name }}</td>
-      <td>{{ student.dateOfBirth | date : "fullDate" }}</td>
-      <td>{{ student.phoneNumber }}</td>
-      <td>{{ student.academicProgram?.name }}</td>
-      <td>
-        <button type="button" (click)="editStudent(student)">Edit</button>
+  <table mat-table [dataSource]="studentData">
+    <ng-container [matColumnDef]="props.ID">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element[props.ID] }}</td>
+    </ng-container>
+    <ng-container [matColumnDef]="props.ACADEMIC_PROGRAM_ID">
+      <th mat-header-cell *matHeaderCellDef>Academic Program</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element[props.ACADEMIC_PROGRAM][props.NAME] }}
       </td>
-    </tr>
+    </ng-container>
+    <ng-container [matColumnDef]="props.NAME">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element[props.NAME] }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          type="button"
+          (click)="editStudent(element)"
+          mat-raised-button
+          color="primary"
+        >
+          Edit
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <div class="buttonRow">
+    <button
+      mat-raised-button
+      type="button"
+      color="prmary"
+      (click)="addNewStudent()"
+    >
+      Add New Student
+    </button>
+  </div>
 </div>
-<hr />
-
-<form [formGroup]="studentFormGroup">
-  <label for="id"> Id: </label>
-  <input id="id" type="number" formControlName="id" />
-  <br />
-  <label for="name"> Name: </label>
-  <input id="name" type="text" formControlName="name" />
-  <br />
-  <label for="dob"> Date Of Birth: </label>
-  <input id="dob" type="date" formControlName="dateOfBirth" />
-  <br />
-  <label for="tel"> Telephone: </label>
-  <input id="tel" type="tel" formControlName="phoneNumber" />
-  <br />
-  <label for="program"> Academic Program: </label>
-  <select name="program" id="program" formControlName="academicProgramId">
-    <option value="1">Cybersecurity</option>
-    <option value="2">Business Administration</option>
-    <option value="3">Nursing</option>
-    <option value="4">Social Services</option>
-  </select>
-  <br />
-
-  <button type="button" (click)="AddNew()">Add New</button>
-  <button type="button" (click)="save()">Save</button>
-</form>

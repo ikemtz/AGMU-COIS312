@@ -1,0 +1,48 @@
+<form [formGroup]="studentFormGroup" style="margin-left: 10px">
+  <mat-form-field appearance="fill">
+    <mat-label>Id:</mat-label>
+    <input matInput type="number" formControlName="id" placeholder="Id" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Name:</mat-label>
+    <input matInput type="text" formControlName="name" placeholder="Name" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label> Date Of Birth:</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br />
+
+  <mat-form-field appearance="fill">
+    <mat-label>Telephone:</mat-label>
+    <input
+      matInput
+      type="tel"
+      formControlName="phoneNumber"
+      placeholder="Phone Number"
+    />
+  </mat-form-field>
+
+  <br />
+  <mat-form-field>
+    <mat-label>Academic Program:</mat-label>
+    <mat-select formControlName="academicProgramId">
+      <mat-option [value]="1">Cybersecurity</mat-option>
+      <mat-option [value]="2">Business Administration</mat-option>
+      <mat-option [value]="3">Nursing</mat-option>
+      <mat-option [value]="4">Social Services</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <div class="buttonRow">
+    <button mat-raised-button mat-dialog-close type="button">Cancel</button>
+    <button mat-raised-button mat-dialog-close type="button" (click)="save()">
+      Save
+    </button>
+  </div>
+</form>
