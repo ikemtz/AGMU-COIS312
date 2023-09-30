@@ -14,6 +14,8 @@ namespace AGMU.WindowsForm
 
     private void Form1_Load(object sender, EventArgs e)
     {
+      // TODO: This line of code loads data into the 'aGMUDataSet.AcademicPrograms' table. You can move, or remove it, as needed.
+      _ = this.academicProgramsTableAdapter.Fill(this.aGMUDataSet.AcademicPrograms);
       // TODO: This line of code loads data into the 'aGMUDataSet.StudentClasses' table. You can move, or remove it, as needed.
       _ = this.studentClassesTableAdapter.Fill(this.aGMUDataSet.StudentClasses);
       // TODO: This line of code loads data into the 'aGMUDataSet.Courses' table. You can move, or remove it, as needed.
@@ -21,9 +23,7 @@ namespace AGMU.WindowsForm
       // TODO: This line of code loads data into the 'aGMUDataSet.Staffs' table. You can move, or remove it, as needed.
       _ = this.staffsTableAdapter.Fill(this.aGMUDataSet.Staffs);
       // TODO: This line of code loads data into the 'aGMUDataSet.Classes' table. You can move, or remove it, as needed.
-      _ = this.classesTableAdapter.Fill(this.aGMUDataSet.Classes);
-      // TODO: This line of code loads data into the 'aGMUDataSet.Programs' table. You can move, or remove it, as needed.
-      _ = this.programsTableAdapter.Fill(this.aGMUDataSet.Programs);
+      _ = this.classesTableAdapter.Fill(this.aGMUDataSet.Classes); 
       // TODO: This line of code loads data into the 'aGMUDataSet.Students' table. You can move, or remove it, as needed.
       _ = this.studentsTableAdapter.Fill(this.aGMUDataSet.Students);
 
@@ -33,8 +33,8 @@ namespace AGMU.WindowsForm
     {
       if (this.grdPrograms.Rows[e.RowIndex].DataBoundItem is DataRowView dataRowView)
       {
-        var program = dataRowView.Row as ProgramsRow;
-        subProgramStudentsBindingSrc.Filter = coursesBindingSource.Filter = $"ProgramId = {program.Id}";
+        var program = dataRowView.Row as AcademicProgramsRow;
+        subProgramStudentsBindingSrc.Filter = coursesBindingSource.Filter = $"AcademicProgramId = {program.Id}";
       }
     }
 
@@ -61,7 +61,7 @@ namespace AGMU.WindowsForm
 
     private void btnSavePrograms_Click(object sender, EventArgs e)
     {
-      _ = this.programsTableAdapter.Update(this.aGMUDataSet.Programs);
+      _ = this.academicProgramsTableAdapter.Update(this.aGMUDataSet.AcademicPrograms);
       _ = this.coursesTableAdapter.Update(this.aGMUDataSet.Courses);
       _ = this.studentsTableAdapter.Update(this.aGMUDataSet.Students);
     }
