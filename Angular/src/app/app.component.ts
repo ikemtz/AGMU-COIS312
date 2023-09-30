@@ -28,6 +28,7 @@ export class AppComponent {
     StudentProperties.ACADEMIC_PROGRAM_ID,
     StudentProperties.NAME,
     StudentProperties.PHONE_NUMBER,
+    StudentProperties.DATE_OF_BIRTH,
     'edit'
   ];
   public readonly subColumnsToDisplay: string[] = [
