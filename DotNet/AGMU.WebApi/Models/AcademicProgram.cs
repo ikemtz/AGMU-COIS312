@@ -1,12 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AGMU.WebApi.Models;
 
 /// <summary>
-/// Mapped from the Programs Table
+/// Mapped from the Academic Programs Table
 /// </summary>
-[Table("Programs")]
 public partial class AcademicProgram
 {
     public int Id { get; set; }

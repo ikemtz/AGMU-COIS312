@@ -18,7 +18,7 @@ public partial class AgmuContext : DbContext
 
     public virtual DbSet<Course> Courses { get; set; }
 
-    public virtual DbSet<AcademicProgram> Programs { get; set; }
+    public virtual DbSet<AcademicProgram> AcademicPrograms { get; set; }
 
     public virtual DbSet<Staff> Staffs { get; set; }
 
